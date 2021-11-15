@@ -1,0 +1,15 @@
+** DONE 测试
+
+1.测试一
+2.测试2,使用c-t ' 进入语言的编辑模式
+
+#+BEGIN_SRC emacs-lisp
+(setq make-backup-files nil)
+(setq org-src-fontify-natively t)
+(setq org-src-fontify-natively t)
+(setq org-src-fontify-natively t)
+(setq org-src-fontify-natively t)
+#+END_SRC
+
+
+** 测试

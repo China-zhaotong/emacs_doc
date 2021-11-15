@@ -1,0 +1,7 @@
+var myfunc = function(){
+    console.log("hello world");
+    for(let i=0;i<20;i++){
+	console.log(`第${i}个`)
+    }
+};
+myfunc();
