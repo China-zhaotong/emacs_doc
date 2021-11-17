@@ -1,39 +1,12 @@
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)  )
+(add-to-list  'load-path "~/.emacs.d/lisp")
+(require 'init-packages)
 
-;;and whatever packages you want here
-(require 'cl)
-(defvar zhaotong/packages '(
-			    company
-			    monokai-theme
-			    hungry-delete
-			    swiper
-			    counsel
-			    smartparens
-			    js-comint
-			    js2-mode
-			    )
-  "Default packages")
 
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell (shell-command-to-string "$SHELL -c 'echo $PATH'")))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
-(when window-system (set-exec-path-from-shell-PATH))
 
-(setq package-selected-packages zhaotong/packages)
-(defun zhaotong/packages-installed-p ()
-  (loop for pkg in zhaotong/packages
-	when(not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
-(unless (zhaotong/packages-installed-p)
-  (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg zhaotong/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
+
+
+
+(setq ring-bell-function 'ignore)
 
 ;;关闭toolbarqqq
 (tool-bar-mode -1)
@@ -59,14 +32,12 @@
 
 (global-set-key (kbd "<f2>" ) 'open-my-init-file)
 
-;;默认当前buff启动company-mode
-(global-company-mode t)
 
 ;;设置光标为bar,setq 只改变当前buffer的变量。setq-default
 (setq-default cursor-type 'bar)
-
 ;;去掉emacs的备份文件机制
 (setq-default make-backup-files nil)
+(setq auto-save-default nil) 
 
 ;;设置org mode 模式下的文字显示效果
 (require 'org)
@@ -90,31 +61,9 @@
 ;;高亮显示当前选中行
 (global-hl-line-mode t)
 
-;;使用主题
-(load-theme 'monokai t)
 
 
-(require 'js-comint)
-(setq js-comint-program-command "c:/Program Files/nodejs/node.exe")
 
-;;使用hungry-delete 插件
-(require 'hungry-delete)
-(global-hungry-delete-mode)
-
-(require 'smartparens-config)
-;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-(smartparens-global-mode t)
-
-(setq auto-mode-alist
-(append '(("\\.js\\'" . js2-mode)) auto-mode-alist))
-
-;;configfor smex
-;;(require 'smex)
-;;(smex-initialize)
-;;(global-set-key (kbd "M-x") 'smex)
-(ivy-mode)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
 ;; enable this if you want `swiper' to use it
 ;; (setq search-default-mode #'char-fold-to-regexp)
 (global-set-key "\C-s" 'swiper)
@@ -136,8 +85,18 @@
 (setq org-agenda-files '("~/org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
 
-
+;;每次配置文件改动，emacs自动加载进入
 (global-auto-revert-mode t)
+
+;;配置popwin 插件
+
+
+
+;;定义缩写
+(abbrev-mode t)
+(define-abbrev-table 'global-abbrev-table '(
+					    ("zt" "zhaotong")
+					    ))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
