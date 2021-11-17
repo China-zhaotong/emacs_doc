@@ -95,7 +95,7 @@
 
 
 (require 'js-comint)
-(setq js-comint-program-command "D:/nodejs/node.exe")
+(setq js-comint-program-command "c:/Program Files/nodejs/node.exe")
 
 ;;使用hungry-delete 插件
 (require 'hungry-delete)
@@ -125,6 +125,19 @@
 (global-set-key (kbd "<f1> f") 'counsel-describe-function)
 (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
 
+
+;;绑定查找快捷键
+(global-set-key (kbd "C-h C-f") 'find-function)
+(global-set-key (kbd "C-h C-v") 'find-variable)
+(global-set-key (kbd "C-h C-k") 'find-function-on-key)
+
+
+;;org-mode 配置
+(setq org-agenda-files '("~/org"))
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+
+(global-auto-revert-mode t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,0 +1,4 @@
+** DONE learn Emacs
+   DEADLINE: <2021-11-16 周二 18:00> SCHEDULED: <2021-11-16 周二 14:00>
+** TODO learn lisp
+   DEADLINE: <2021-11-18 周四 18:00> SCHEDULED: <2021-11-18 周四 14:00>
