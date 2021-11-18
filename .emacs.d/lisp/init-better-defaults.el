@@ -20,6 +20,14 @@
 ;;selection mode
 (delete-selection-mode t)
 
+
+;;增强show paren-mode
+(define-advice show-paren-function(
+				   :around (fn) fix-show-paren-function)
+  (cond ((looking-at-p "\\s()") (funcall fn))
+	(t (save-excursion (ignore-errors (backward-up-list))
+			   (funcall fn)))))
+
 ;;激活括号显示
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
@@ -42,4 +50,26 @@
       (progn
 	(indent-buffer) (message "Indented buffer.")))))
 
+
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+					 try-expand-dabbrev-all-buffers
+					 try-expand-dabbrev-from-kill
+					 try-complete-file-name-partially
+					 try-complete-file-name
+					 try-expand-all-abbrevs
+					 try-expand-list
+					 try-expand-line
+					 try-complete-lisp-symbol-partially
+					 try-complete-lisp-symbol))
+
+
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
+
+(put 'dired-find-alternate-file 'disabled nil)
+
+(require 'dired-x)
+
+(setq dired-dwim-target t)
 (provide 'init-better-defaults)

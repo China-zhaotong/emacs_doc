@@ -44,6 +44,7 @@
 
 ;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
+(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 ;;configfor smex
 ;;(require 'smex)
 ;;(smex-initialize)
