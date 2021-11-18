@@ -23,4 +23,6 @@
 ;;
 (global-set-key (kbd "C-c p f") 'counsel-git)
 
+(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+
 (provide 'init-keybindings)

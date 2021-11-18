@@ -12,6 +12,10 @@
 (require 'init-keybindings)
 (require 'init-org)
 
+
 (setq custom-file(expand-file-name "lisp/custom.el" user-emacs-directory))
+
+;;自动更新目录下的lisp文件，根据魔法注释;;;### autoloads  来生成autoload
+;;(update-directory-autoloads )
 
 (load-file custom-file)
